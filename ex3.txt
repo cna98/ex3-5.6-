@@ -1,0 +1,79 @@
+
+
+//اعضای دو آرایه بصورت صعودی در یک آرایه ذخیره میشوند
+
+package ex3;
+
+import java.util.Scanner;
+
+public class Ex3 {
+	public static void main(String[]args) 
+	{
+		System.out.print("Enter size of fisrt array :  ");
+		
+		Scanner input = new Scanner(System.in);
+		
+		int sizeOfFirstArray , sizeOfSecondArray , sizeOfThirdArray , k = 0;
+		sizeOfFirstArray = input.nextInt();
+		int[] firstArray = new int[sizeOfFirstArray];
+		
+		System.out.println("Enter elemnts of first array :");
+		
+		for(int i = 0 ; i <sizeOfFirstArray ; i++)
+		{
+	      firstArray[i] = input.nextInt();
+	      
+		}
+		
+		System.out.print("Enter size of second array :  ");
+		
+		sizeOfSecondArray = input.nextInt();
+		
+		sizeOfThirdArray = sizeOfFirstArray + sizeOfSecondArray;
+		
+		int[] secondArray = new int[sizeOfSecondArray];
+		
+		System.out.println("Enter elements of second array :");
+		
+		for(int i = 0 ; i<sizeOfSecondArray ; i++)
+		{
+			secondArray[i] = input.nextInt();
+		}
+		
+		int[] thirdArray = new int[sizeOfThirdArray];
+		
+		for(int i = 0 ; i<sizeOfThirdArray ; i++)
+		{
+			
+			if( i < sizeOfFirstArray)
+				thirdArray[i] = firstArray[i];
+			else
+			{
+				thirdArray[i] = secondArray[k];
+				k++;
+			}
+		}
+		
+		
+		
+		for(int i = 0 ; i < sizeOfThirdArray ;i++)
+		{
+			for(int j = 0 ; j < sizeOfThirdArray - i -1 ; j++)
+			{
+				if(thirdArray[j] > thirdArray[j+1])
+				{
+					int swap = thirdArray[j];
+					thirdArray[j] = thirdArray[j+1];
+					thirdArray[j+1] = swap;
+				}
+				
+			}
+		}
+		
+		for(int i = 0 ; i < sizeOfThirdArray ; i++)
+		{
+			System.out.print(String.format("%d\t", thirdArray[i]));
+		}
+	}
+
+}
